@@ -1,7 +1,3 @@
-# setwd("/Users/bio/Projects/")
-# load("STTT.RData")
-
-
 library(dplyr)
 library(DESeq2)
 library(openxlsx)
@@ -107,7 +103,7 @@ dev.off()
 
 deg_genes <- unique(unlist(gene_list))
 # read fpkm
-fpkm <- read.table("/Users/niexiner/Documents/Phd/STTT/data/BMK_4_geneExpression/BMK_3_Expression_Statistics/All_gene_fpkm.list",
+fpkm <- read.table("All_gene_fpkm.list",
   header = TRUE, sep = "\t", comment.char = "", check.names = F
 )
 colnames(fpkm)[1] <- "ID"
@@ -521,7 +517,7 @@ ggsave(bar_kegg, file = "The barplot of significant signal transduction pathways
 
 
 # ---------------------- TF ----------------------
-tf_all <- read.csv("/Users/niexiner/Documents/Phd/STTT/data/results/20260724/DatabaseExtract_v_1.01.csv", header = T, row.names = 1)
+tf_all <- read.csv("DatabaseExtract_v_1.01.csv", header = T, row.names = 1)
 tf_all <- tf_all %>% filter(Is.TF. == "Yes")
 head(tf_all)
 dim(tf_all)
@@ -647,6 +643,3 @@ cytokine_ph <- pheatmap::pheatmap(
 )
 cytokine_ph
 ggsave(cytokine_ph, file = "The heatmap of cytokines.pdf", width = 6, height = 6)
-
-
-save.image("STTT.RData")
